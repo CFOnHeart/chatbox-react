@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .chatbox {
+            width: 400px;
+            height: 500px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        .chatbox ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .chatbox li {
+            margin-bottom: 10px;
+        }
+        .chatbox img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .chatbox p {
+            display:inline-block; 
+            max-width:70%;
+            background-color:#f1f1f1; 
+            padding:5px; 
+            border-radius:5px
+        }
+        
+        .user-message{
+          text-align:right
+          }
+          
+         .assistant-message{
+          text-align:left
+          } 
+          
+         input[type=text]{
+           width :80%;
+           border-radius :15px ;
+           padding :12px ;
+           margin-top :16px ;
+           margin-left :8% ;
+           margin-right :2%
+         } 
+         
+         button{
+           width :10%;
+           border-radius :15px ;
+           padding :12px ;
+           margin-top :16px ;
+         }  
+    </style>
+</head>
+<body>
+
+<div class="chatbox">
+    <ul>
+      <li class="assistant-message">
+          <img src="assistant.jpg" alt="Assistant">
+          <strong>Assistant</strong><br>
+          <p>你好！有什么我可以帮忙的吗？</p>
+      </li>
+      <li class="user-message">
+          <img src="user.jpg" alt="User">
+          <strong>User</strong><br>
+          <p>你能告诉我今天的天气吗？</p>
+      </li>  
+    </ul>
+
+<input type="text" placeholder="Type message.."><button>Send</button>
+
+</div>
+
+</body>
+</html>
