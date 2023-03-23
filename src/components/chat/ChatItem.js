@@ -9,22 +9,22 @@ import gptIconImg from "../../images/gpt.png"
 const ChatItem = (props) => { 
     if (props.IsBot) {
       return (
-        <li className="bot-message">
+        <div className="bot-message">
           <img src={gptIconImg} alt="Assistant" />
           <strong>Assistant</strong>
           <br />
           <p>{props.content}</p>
-        </li>
+        </div>
       );
     }
     else {
       return (
-        <li className="user-message">
+        <div className="user-message">
           <strong>User</strong>
           <img src={userIconImg} alt="User" />
           <br />
           <p>{props.content}</p>
-        </li>
+        </div>
       );
     }
   };

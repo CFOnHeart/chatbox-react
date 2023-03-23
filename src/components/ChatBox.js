@@ -1,37 +1,47 @@
-import React, { useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../css/chatbox.css';
 import ChatItem from "./chat/ChatItem";
+import {GetResponseOfBot} from "./chat/ChatAPI";
 
 const ChatBox = () => {
     const [inputValue, setInputValue] = useState('');
     const [messageItems, setMessageItems] = useState([]);
+    const bottomRef = useRef(null); // for move the scroll panel to the bottom
+
+    useEffect(() => {
+      // 👇️ scroll to bottom every time messages change
+      bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+    }, [messageItems]);
 
     const handleSend = () => {
-        setMessageItems([...messageItems, {content: inputValue, IsBot: false}, {content: "哈哈，我还在开发，等待接口接入返回结果把", IsBot: true}]);
-        setInputValue('');
-        console.log(messageItems)
-        console.log(inputValue)
-      };
+      setMessageItems([...messageItems, {content: inputValue, IsBot: false}, {content: GetResponseOfBot(inputValue), IsBot: true}]);
+      setInputValue('');
+    };
+    
+    // normal methods
+    function ListChatItems(items) {
+      const listItems = [];
+      for (let i = 0; i < items.length; i++) {
+          listItems.push(<ChatItem content={items[i].content} IsBot={items[i].IsBot} />);
+      }
+      return listItems
+    }
 
     return (
       <div className="chatbox">
-        <ul>
+        <div className="chat-main-panel">
+          
             {ListChatItems(messageItems)}
-        </ul>
+            <div ref={bottomRef} />
+        </div>
   
-        <input type="text" placeholder="Type message.." value={inputValue} onChange={e => setInputValue(e.target.value)} />
+        <input id="input-box" type="text" placeholder="Type message.." value={inputValue} onChange={e => setInputValue(e.target.value)} />
         <button onClick={handleSend}>Send</button>
       </div>
     );
 
     
-    function ListChatItems(items) {
-        const listItems = [];
-        for (let i = 0; i < items.length; i++) {
-            listItems.push(<ChatItem content={items[i].content} IsBot={items[i].IsBot} />);
-        }
-        return listItems
-    }
+    
   };
   
 
