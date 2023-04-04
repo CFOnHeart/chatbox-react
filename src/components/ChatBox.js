@@ -34,9 +34,12 @@ const ChatBox = () => {
             {ListChatItems(messageItems)}
             <div ref={bottomRef} />
         </div>
-  
-        <input id="input-box" type="text" placeholder="Type message.." value={inputValue} onChange={e => setInputValue(e.target.value)} />
-        <button onClick={handleSend}>Send</button>
+
+        <div className="input-panel">
+          <input className="input-box" type="text" placeholder="Type message.." value={inputValue} onChange={e => setInputValue(e.target.value)} />
+          <button className="input-button" onClick={handleSend}>Send</button>
+        </div>
+        
       </div>
     );
 

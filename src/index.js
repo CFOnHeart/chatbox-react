@@ -6,9 +6,7 @@ import ChatBox from './components/ChatBox';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <ChatBox />
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
